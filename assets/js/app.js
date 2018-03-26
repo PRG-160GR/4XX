@@ -61,6 +61,26 @@ function displayPB() {
         setTimeout(displayPB, 50);
     } else {
         timerCount = 0;
+        document.body.innerHTML = formLogin();
         return false;
     }
+}
+function validateLogin() {
+
+    var email = document.getElementById("email").value;
+
+    var password = document.getElementById("pwd").value;
+
+    if (email !== '' && password !== '') {
+
+        document.body.innerHTML = '<main class="animated zoomIn"><h1 id="inNow">We are in now</h1></main>';
+
+    } else {
+
+        alert('bad');
+
+    }
+
+return false;
+
 }
