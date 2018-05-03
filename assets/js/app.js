@@ -8,7 +8,9 @@ var appData = {
 
     title: 'inside out - js',
 
-    tagLine: 'continuously falling forward into the light...'
+    tagLine: 'continuously falling forward into the light...',
+
+    sideMenu: ['posts', 'pages']
 
 };
 
@@ -118,7 +120,7 @@ function displayPB() {
 
         timerCount++;
 
-        setTimeout(displayPB, 50);
+        setTimeout(displayPB, 15);
 
     } else {
 
@@ -200,9 +202,9 @@ function buildMenu() {
 
 
 
-    for (let i = 0; i < quotArr.length; i++) {
+    for (let i = 0; i < appData.sideMenu.length; i++) {
 
-        sm += '<li class="nav-item"><a class="nav-link active" data-dest="' + i + '" href="#">' + quotArr[i][1].split(",", 1) + '</a></li>';
+        sm += '<li class="nav-item"><a class="nav-link active" data-dest="' + appData.sideMenu[i] + '" href="#">' + appData.sideMenu[i] + '</a></li>';
 
     }
 
@@ -230,10 +232,22 @@ function buildMain() {
 
 function linkClicked(obj) {
 
-    console.log(obj.dataset.dest);
+	console.log(obj.dataset.dest);
 
-    var str = '<div class="infoDiv"><h1 class="animated zoomIn">' + quotArr[obj.dataset.dest][0] + '</h1><div class="animated slideInRight auth">- ' + quotArr[obj.dataset.dest][1] + '</div></div>';
+	if (appData.sideMenu.includes(obj.dataset.dest)) {
 
-     document.getElementById("main").innerHTML = str;
+		ajax.get('https://me.inside-out-project.com/wp-json/wp/v2/' + obj.dataset.dest, {
+
+			per_page: '50'
+
+		}, useData);
+
+	} else {
+
+		var str = '<div class="infoDiv"><h1 class="animated zoomIn">' + quotArr[obj.dataset.dest][0] + '</h1><div class="animated slideInRight auth">- ' + quotArr[obj.dataset.dest][1] + '</div></div>';
+
+		document.getElementById("main").innerHTML = str;
+
+	}
 
 }
