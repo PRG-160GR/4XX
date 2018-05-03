@@ -66,6 +66,8 @@ h1 {
 
     background-color: #CCC;
 
+    margin-bottom: 72px;
+
 }
 
 .sidebar ul {
@@ -109,6 +111,30 @@ h1 {
     padding-bottom: 3rem;
 
 }
+
+
+
+.auth {
+
+  width: 84%;
+
+  text-align: right;
+
+  font-size: .5em;
+
+  margin: auto;
+
+}
+
+
+
+.infoDiv {
+
+  margin-top: 20%;
+
+}
+
+
 
 .placeholder img {
 
